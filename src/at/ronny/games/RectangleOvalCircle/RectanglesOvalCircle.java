@@ -39,11 +39,14 @@ public class RectanglesOvalCircle extends BasicGame {
 
         if (this.x1 <= 700 && this.y1 <= 0 && this.rollback == false) {
             this.x1 += (float) delta/this.speed; //Oval
-            if (this.x1 == 700 && this.y1 <= 0){
+            if (this.x1 >= 700 && this.y1 <= 0){
                 this.rollback = true;
             }
         } else if (this.x1 >=0 && this.y1 <= 0 && this.rollback == true){
             this.x1 -= (float) delta/this.speed; //Oval
+            if (this.x1 <= 0 && this.y1 <= 0){
+                this.rollback = false;
+            }
         }
             /*
 
