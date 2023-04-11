@@ -20,17 +20,42 @@ public class RectanglesOvalCircle extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         this.speed = 5.0f;
+        this.y = 100;
+        this.x = 100;
+        //this.rollback = false;
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-            this.y += (float) delta/this.speed;
-            this.x += (float) delta/this.speed;
-            this.x1 += (float) delta/this.speed;
-            this.y2 += (float) delta/this.speed;
+        if (this.x <= 600 && this.y <= 100){
+            this.x += (float) delta/this.speed;  //Rectangle
+        } else if (this.x >= 600 && this.y <= 400){
+            this.y += (float) delta/this.speed;  //Rectangle
+        } else if (this.x >= 100 && this.y <= 500){
+            this.x -= (float) delta/this.speed;
+        } else if (this.x <= 100 && this.y >= 100){
+            this.y -= (float) delta/this.speed;
+        }
+
+        if (this.x1 <= 700 && this.y1 <= 0 && this.rollback == false) {
+            this.x1 += (float) delta/this.speed; //Oval
+            if (this.x1 == 700 && this.y1 <= 0){
+                this.rollback = true;
+            }
+        } else if (this.x1 >=0 && this.y1 <= 0 && this.rollback == true){
+            this.x1 -= (float) delta/this.speed; //Oval
+        }
+            /*
 
 
-    }
+            this.y2 += (float) delta/this.speed; //Kreis
+
+        if ()*/
+        }
+
+
+
+
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
