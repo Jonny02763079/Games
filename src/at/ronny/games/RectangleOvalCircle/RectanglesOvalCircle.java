@@ -12,7 +12,8 @@ public class RectanglesOvalCircle extends BasicGame {
     private float x2;
     private float y2;
     private float speed;
-    private boolean rollback;
+    private boolean directionturnOval;
+    private boolean directionturnCircle;
     public RectanglesOvalCircle(String title) {
         super(title);
     }
@@ -37,23 +38,32 @@ public class RectanglesOvalCircle extends BasicGame {
             this.y -= (float) delta/this.speed;
         }
 
-        if (this.x1 <= 700 && this.y1 <= 0 && this.rollback == false) {
+        if (this.x1 <= 700 && this.y1 <= 0 && this.directionturnOval == false) {
             this.x1 += (float) delta/this.speed; //Oval
             if (this.x1 >= 700 && this.y1 <= 0){
-                this.rollback = true;
+                this.directionturnOval = true;
             }
-        } else if (this.x1 >=0 && this.y1 <= 0 && this.rollback == true){
+        } else if (this.x1 >=0 && this.y1 <= 0 && this.directionturnOval == true){
             this.x1 -= (float) delta/this.speed; //Oval
             if (this.x1 <= 0 && this.y1 <= 0){
-                this.rollback = false;
+                this.directionturnOval = false;
+            }
+        }
+
+        if (this.x2 <= 0 && this.y2 <= 500 && this.directionturnCircle == false){
+            this.y2 += (float) delta/this.speed; //Kreis
+            if (this.y2 >= 500 && this.x2 <= 0){
+                this.directionturnCircle = true;
+            }
+        } else if (this.y2 >= 0 && this.x2 <= 0 && this.directionturnCircle == true){
+            this.y2 -= (float) delta/speed;
+            if (this.y2 <= 0 && this.x2 <=0){
+                this.directionturnCircle = false;
             }
         }
             /*
 
-
-            this.y2 += (float) delta/this.speed; //Kreis
-
-        if ()*/
+        */
         }
 
 
