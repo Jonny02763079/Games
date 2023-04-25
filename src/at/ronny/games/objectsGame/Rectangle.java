@@ -8,6 +8,7 @@ public class Rectangle {
     private float y;
     private float speed;
 
+
     public Rectangle(int x, int y, float speed) {
         this.x = x;
         this.y = y;
